@@ -1,18 +1,32 @@
 from flask import Flask
-from config import Config
-from extensions import (
-    db,
-    migrate,
-    bcrypt,
-    jwt,
-    ma
-)
 from flask_cors import CORS
 
-from routes.auth import auth_bp
-from routes.properties import properties_bp
-from routes.favorites import favorites_bp
-from routes.inquiries import inquiries_bp
+try:
+    from .config import Config
+    from .extensions import (
+        db,
+        migrate,
+        bcrypt,
+        jwt,
+        ma,
+    )
+    from .routes.auth import auth_bp
+    from .routes.properties import properties_bp
+    from .routes.favorites import favorites_bp
+    from .routes.inquiries import inquiries_bp
+except ImportError:
+    from config import Config
+    from extensions import (
+        db,
+        migrate,
+        bcrypt,
+        jwt,
+        ma,
+    )
+    from routes.auth import auth_bp
+    from routes.properties import properties_bp
+    from routes.favorites import favorites_bp
+    from routes.inquiries import inquiries_bp
 
 app = Flask(__name__)
 
@@ -25,7 +39,10 @@ CORS(app, resources={r"/*": {"origins": ["https://deft-lily-0b05b4.netlify.app",
 db.init_app(app)
 
 # Import all models so Flask-Migrate can detect them
-from models import *
+try:
+    from .models import *
+except ImportError:
+    from models import *
 
 # Initialize other extensions
 migrate.init_app(app, db)
