@@ -10,6 +10,9 @@ class Config:
     JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY")
     SECRET_KEY = os.getenv("SECRET_KEY")
 
+    # Frontend URL
+    FRONTEND_URL = os.getenv("FRONTEND_URL")
+
     # Flask-Mail Configuration
     MAIL_SERVER = "smtp.gmail.com"
     MAIL_PORT = 587

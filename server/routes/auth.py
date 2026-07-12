@@ -1,4 +1,5 @@
 from flask import Blueprint, request, jsonify
+from flask import current_app
 
 from extensions import db
 from models.user import User
@@ -121,7 +122,7 @@ def forgot_password():
 
     token = generate_reset_token(user.email)
 
-    reset_link = f"http://localhost:5173/reset-password/{token}"
+    reset_link = f"{current_app.config['FRONTEND_URL']}/reset-password/{token}"
 
     msg = Message(
         subject="Reset Your Pangisha SmartHouse Password",
