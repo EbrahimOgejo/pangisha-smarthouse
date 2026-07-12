@@ -34,7 +34,7 @@ CORS(
             "origins": [
                 "http://localhost:5173",
                 "http://127.0.0.1:5173",
-                "https://pangisha-smarthouse-client-koddf69m9-d-bengos-projects.vercel.app"
+                "https://pangisha-smarthouse-24vj-iota.vercel.app"
             ]
         }
     },
