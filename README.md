@@ -69,7 +69,6 @@ pangisha-smarthouse/
 │   ├── src/
 │   ├── public/
 │   └── package.json
-├── wsgi.py                 # WSGI entrypoint for deployment
 └── README.md
 ```
 
@@ -169,9 +168,8 @@ VITE_API_URL=http://127.0.0.1:5555
 
 After a successful login, the backend returns a JWT token. The frontend stores it in local storage and attaches it automatically to protected requests.
 
-## Deployment Notes
+## DEPLOYMENT NOTES
 
-For deployment, the backend can be served through the WSGI entrypoint in `wsgi.py`. In production, configure real environment variables such as:
 - `SECRET_KEY`
 - `JWT_SECRET_KEY`
 - `DATABASE_URL` with a PostgreSQL connection string
